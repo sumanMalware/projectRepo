@@ -61,7 +61,7 @@ function genrateUniqueId(): any {
   let elem_2 = alpha[~~(Math.random() * alpha.length)];
   let elem_3 = numeric[~~(Math.random() * numeric.length)];
   let elem_4 = numeric[~~(Math.random() * numeric.length)];
-  return [elem_1 + "" + elem_2 + "" + elem_3 + "" + elem_4]
+  return elem_1 + "" + elem_2 + "" + elem_3 + "" + elem_4
 }
 //function for generating unique venue for each match
 function generatUniqueVenue():any{
