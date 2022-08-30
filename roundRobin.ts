@@ -1,4 +1,4 @@
-let HowManyTeam = 5                                           //entering the numbe how many teams you want
+let HowManyTeam = 7                                           //entering the numbe how many teams you want
 
 //declaring the interface of object where teams are declared
 interface Tournament {
@@ -10,7 +10,7 @@ interface Tournament {
 let theTournament: Tournament = {
   nameOfTournament: "Gokuldham primear leauge",
   teams: [],
-  startDate:"2022-08-25"
+  startDate:new Date()
 }
 //giving the team names
 let counting = 1
@@ -92,7 +92,7 @@ for (let i = 0; i <= 6; i++) {
 let day=[]
 let dt:any = new Date(sunDay);
 let dt2:any = new Date(saturDay)
-for (let e = 0; e <= 4; e++) {
+for (let e = 0; e <= opponents.length; e++) {
     dateList.push((new Date(dt2)).toString().substring(4, 15))
     dateList.push((new Date(dt)).toString().substring(4, 15))
     day.push(daysDeclaration[dt2.getDay(saturDay)])
