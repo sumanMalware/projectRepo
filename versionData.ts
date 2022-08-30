@@ -1,5 +1,6 @@
-
 //declaring the interface for the objects inside the array
+enum updateType{patch,major,enhancement}
+
 interface androidData{
     version:number,
     name:string,
@@ -106,7 +107,7 @@ for(let i in androidVersion){
     }
 }
 console.log(`${count} Releases in year 2009`)
-console.log("in which release, we have the bug #864785")
+console.log("In which release, we have the bug #864785")
 for(let i in androidVersion){
     if(androidVersion[i].bugs[0].id==864785){
         console.log(androidVersion[i])
@@ -114,8 +115,10 @@ for(let i in androidVersion){
 }
 console.log("who is the Author who worked on maximum numbers releasd ")
 
+
+
 // console.log("How many releases where patch releases ")
 // console.log("How many releases where major releases ")
 // console.log("How many releases where enhancement releases ")
 
-androidVersion.forEach((data,index)=>console.log(data))
+// androidVersion.forEach((data,index)=>console.log(data))
