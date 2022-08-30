@@ -1,4 +1,4 @@
-let HowManyTeam = 6                                            //entering the numbe how many teams you want
+let HowManyTeam = 5                                           //entering the numbe how many teams you want
 
 //declaring the interface of object where teams are declared
 interface Tournament {
@@ -52,7 +52,7 @@ if (opponents.length % 2 != 0) {
   opponents.push("None")
 }
 
-//generating unique match id for each match
+//function for generating unique match id for each match
 
 function genrateUniqueId(): any {
   let alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -62,6 +62,12 @@ function genrateUniqueId(): any {
   let elem_3 = numeric[~~(Math.random() * numeric.length)];
   let elem_4 = numeric[~~(Math.random() * numeric.length)];
   return [elem_1 + "" + elem_2 + "" + elem_3 + "" + elem_4]
+}
+//function for generating unique venue for each match
+function generatUniqueVenue():any{
+  let venue=["Dubai International Cricket Stadium","Wankhede Stadium","M Chinnaswamy Stadium","PCA Stadium","Feroz Shah Kotla","Eden Garden","MA Chidambaram Stadium"]
+  let place=venue[~~(Math.random() * venue.length)];
+  return place
 }
 
 //date function starts from here
@@ -110,21 +116,22 @@ for (let i = 0; i < opponents.length; i = i + 2) {
     daySchedule["Tournament Name"]=theTournament.nameOfTournament
     daySchedule["Date"] = dateList[count]
     daySchedule["Day"]=day[count]
+    daySchedule["Venue"]=generatUniqueVenue()
 
     daySchedule["Slot_No"]=1
     daySchedule["Match_No"] = i + 1
-    daySchedule["Match_Id"]=genrateUniqueId()    
-    daySchedule["Morning Batch"] = opponents[i]
+    daySchedule["Match Id"]=genrateUniqueId()
     
+    daySchedule["Morning Batch"] = opponents[i]
     if (opponents[d + 1] != "None") {
         daySchedule["Slot No"]=2
         daySchedule["Match No"] = i + 2
-        daySchedule["Match Id"]=genrateUniqueId()
+        daySchedule["Match_Id"]=genrateUniqueId()
 
         daySchedule["Evening Batch"] = opponents[d + 1]
     }
     count++
     mainList.push(daySchedule)
 }
-mainList.forEach((index)=>(console.log(index)))         //consoling each day schedule
+mainList.forEach((data,index)=>(console.log(data)))         //consoling each day schedule
 
