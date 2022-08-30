@@ -111,15 +111,15 @@ for (let i = 0; i < opponents.length; i = i + 2) {
     daySchedule["Date"] = dateList[count]
     daySchedule["Day"]=day[count]
 
-    daySchedule["Slot No"]=1
-    daySchedule["Match No"] = i + 1
-    daySchedule["Match Id"]=genrateUniqueId()
-    
+    daySchedule["Slot_No"]=1
+    daySchedule["Match_No"] = i + 1
+    daySchedule["Match_Id"]=genrateUniqueId()    
     daySchedule["Morning Batch"] = opponents[i]
+    
     if (opponents[d + 1] != "None") {
         daySchedule["Slot No"]=2
         daySchedule["Match No"] = i + 2
-        daySchedule["Match_Id"]=genrateUniqueId()
+        daySchedule["Match Id"]=genrateUniqueId()
 
         daySchedule["Evening Batch"] = opponents[d + 1]
     }
