@@ -33,7 +33,7 @@ let androidVersion: androidData[] = [
             "Access to web email servers, supporting POP3, IMAP4, and SMTP",
         ],
         author: "Sergey Brin",
-        updateType: "Major",
+        updateType: "major",
 
     },
     {
@@ -72,7 +72,7 @@ let androidVersion: androidData[] = [
             "Multi-lingual speech synthesis engine to allow any Android application to 'speak' a string of text.",
         ],
         author: "Apritam Sarkar",
-        updateType: "Enhancement",
+        updateType: "enhancement",
     },
     {
         version: 2.0,
@@ -102,25 +102,28 @@ let androidVersion: androidData[] = [
 //function for how many release in a specific year
 
 function specificYear(year: any) {
-
     let count: any = []
-    year.forEach((data: any) => {
-        if (data.releaseDate.getFullYear() == 2009) {
+    androidVersion.forEach((data: any) => {
+        if (data.releaseDate.getFullYear() == year) {
             count.push(data.name)
         }
     })
-    return count
+    return console.log(`1. How many release in year ${year}? \n Ans= ${count.length} Releases in year ${year}. ${count} `)
 }
-console.log(`1. How many release in year 2009? \n Ans= ${specificYear(androidVersion).length} Releases in year 2009,they are ${specificYear(androidVersion)} `)
+specificYear(2009)
 
 //function for get a version release based on bug ID
 
-androidVersion.forEach(function (data) {
+function getSpecificId(id: number) {
+    androidVersion.forEach(function (data) {
 
-    if (data.bugs[0].id == 864785) {
-        console.log(`2. In which release, we have the bug #864785? \n Ans= In ${data.name} we have bug ${data.bugs[0].id} `)
-    }
-})
+        if (data.bugs[0].id == id) {
+            console.log(`2. In which release, we have the bug ${id}? \n Ans= In ${data.name} we have bug ${data.bugs[0].id} `)
+        }
+    })
+}
+getSpecificId(864835)
+
 
 //function for get a specific author input in an update
 
@@ -165,26 +168,28 @@ for (let i in sortingForObject(counts)) {
 
 //function for get how many patch, major, enhancement type update done in which version
 
-function specificUpdate(update: any) {
+function specificUpdate(update: string) {
+    let updateInLower = update.toLowerCase()
     let tempArr: any = []
-    update.forEach((data: any) => {
-        if (data.updateType.includes("patch")) {
+    androidVersion.forEach((data: any) => {
+        if (data.updateType.includes(updateInLower)) {
             tempArr.push(data.name)
         }
     })
-    return tempArr
+    console.log(`4. How many releases where ${update} releases? \n Ans= ${tempArr.length} ${update} release ${tempArr}`)
 }
-console.log(`4. How many releases where patch releases? \n Ans= ${specificUpdate(androidVersion).length} patch release, that are ${specificUpdate(androidVersion)}`)
+specificUpdate("Major")
 
 //function for get specific feature
 
-function specificFeature(feature: any) {
+function specificFeature(feature:string){
     let tempArr: any = []
-    feature.forEach((data: any) => {
-        if (data.features.includes("Ability to save attachments in messages.")) {
+    androidVersion.forEach((data: any) => {
+        if (data.features.includes(feature)) {
             tempArr.push(data.name)
         }
     })
-    return tempArr
+    console.log(`5. How many versions have the ${feature}?\n Ans= ${tempArr.length} have the Ability to save attachments in messages, those are ${tempArr}`)
+
 }
-console.log(`5. How many versions have the Ability to save attachments in messages ?\n Ans= ${specificFeature(androidVersion).length} have the Ability to save attachments in messages, those are ${specificFeature(androidVersion)}`)
+specificFeature("Ability to save attachments in messages.")
