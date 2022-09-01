@@ -81,7 +81,7 @@ let androidVersion: androidData[] = [
         bugs: [
             {
                 id: 865231,
-                bugDescription: "dial pad stuck",
+                bugDescription: "Dial pad stuck",
             },
         ],
         bugFixed: "yes",
@@ -127,13 +127,16 @@ androidVersion.forEach(function (data) {
 let thisArr: any = []
 
 androidVersion.forEach((data) => {
-    thisArr.push(data.author)
+    thisArr.push(data.author)                           //pushing every author contribution in an array
 })
+
+//counting the contribution of each author
+
 var counts: any = {};
 for (var i = 0; i < thisArr.length; i++) {
     counts[thisArr[i]] = (counts[thisArr[i]] + 1) || 1;
-
 }
+//sorting the object of Author
 const sortingForObject = (ob1: any) => {
     let ob2: any = {};
     let arr1: any = [];
@@ -156,7 +159,7 @@ const sortingForObject = (ob1: any) => {
 };
 
 for (let i in sortingForObject(counts)) {
-    console.log(`3. who is the Author who worked on maximum numbers releasd?\n ${i} is the Author who is contrubuting most is releases with ${sortingForObject(counts)[i]} times`)
+    console.log(`3. who is the Author who worked on maximum numbers releasd?\n ${i} is the Author who is contrubuting most in releases, with ${sortingForObject(counts)[i]} times`)
     break
 }
 
@@ -176,10 +179,6 @@ console.log(`4. How many releases where patch releases? \n Ans= ${specificUpdate
 //function for get specific feature
 
 function specificFeature(feature: any) {
-    feature.forEach((data: any) => {
-        if (data.author) {
-        }
-    })
     let tempArr: any = []
     feature.forEach((data: any) => {
         if (data.features.includes("Ability to save attachments in messages.")) {
@@ -188,4 +187,4 @@ function specificFeature(feature: any) {
     })
     return tempArr
 }
-console.log(`5. How many versions have the specific feature name ?\n Ans= ${specificFeature(androidVersion).length} have the Ability to save attachments in messages, those are ${specificFeature(androidVersion)}`)
+console.log(`5. How many versions have the Ability to save attachments in messages ?\n Ans= ${specificFeature(androidVersion).length} have the Ability to save attachments in messages, those are ${specificFeature(androidVersion)}`)
