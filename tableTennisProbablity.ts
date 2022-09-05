@@ -104,7 +104,6 @@ quarterfinal.forEach((data: any, index: any) => {
 })
 
 let semiFinal: any = []
-let counting = 1
 
 for (let i in semiFinalOpponent1) {
 
@@ -115,24 +114,24 @@ for (let i in semiFinalOpponent1) {
 
     if (semiFinalOpponent1[i].point > semiFinalOpponent2[i].point) {
         semiFinal.push(semiFinalOpponent1[i])
-        console.log(`MATCH:- ${counting} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent1[i].name}`)
-        counting++
+        console.log(`MATCH:- ${count} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent1[i].name}`)
+        count++
     }
     else if (semiFinalOpponent1[i].point == semiFinalOpponent2[i].point) {
         if (semiFinalOpponent1[i].rank > semiFinalOpponent2[i].rank) {
             semiFinal.push(semiFinalOpponent2[i])
-            console.log(`MATCH:- ${counting} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent2[i].name}`)
-            counting++
+            console.log(`MATCH:- ${count} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent2[i].name}`)
+            count++
         } else {
             semiFinal.push(semiFinalOpponent1[i])
-            console.log(`MATCH:- ${counting} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent1[i].name}`)
-            counting++
+            console.log(`MATCH:- ${count} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent1[i].name}`)
+            count++
         }
     }
     else if (semiFinalOpponent1[i].point < semiFinalOpponent2[i].point) {
         semiFinal.push(semiFinalOpponent2[i])
-        console.log(`MATCH:- ${counting} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent2[i].name}`)
-        counting++
+        console.log(`MATCH:- ${count} Opponents :- ${semiFinalOpponent1[i].name} vs ${semiFinalOpponent2[i].name}\n WINNER :- ${semiFinalOpponent2[i].name}`)
+        count++
     }
 }
 
@@ -150,7 +149,6 @@ semiFinal.forEach((data: any, index: any) => {
 })
 
 let final: any = []
-let countings = 1
 
 for (let i in finalOpponent1) {
 
@@ -161,23 +159,23 @@ for (let i in finalOpponent1) {
 
     if (finalOpponent1[i].point > finalOpponent2[i].point) {
         final.push(finalOpponent1[i])
-        console.log(`MATCH:- ${countings} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent1[i].name}`)
-        countings++
+        console.log(`MATCH:- ${count} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent1[i].name}`)
+        count++
     }
     else if (finalOpponent1[i].point == finalOpponent2[i].point) {
         if (finalOpponent1[i].rank > finalOpponent2[i].rank) {
             final.push(finalOpponent2[i])
-            console.log(`MATCH:- ${countings} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent2[i].name}`)
-            countings++
+            console.log(`MATCH:- ${count} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent2[i].name}`)
+            count++
         } else {
             final.push(finalOpponent1[i])
-            console.log(`MATCH:- ${countings} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent1[i].name}`)
-            countings++
+            console.log(`MATCH:- ${count} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent1[i].name}`)
+            count++
         }
     }
     else if (finalOpponent1[i].point < finalOpponent2[i].point) {
         final.push(finalOpponent2[i])
-        console.log(`MATCH:- ${countings} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent2[i].name}`)
-        countings++
+        console.log(`MATCH:- ${count} Opponents :- ${finalOpponent1[i].name} vs ${finalOpponent2[i].name}\n WINNER :- ${finalOpponent2[i].name}`)
+        count++
     }
 }
