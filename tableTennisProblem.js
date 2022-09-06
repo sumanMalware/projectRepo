@@ -15,7 +15,7 @@ for (let i = 0; i < tableTennis.length / 2; i++) {
     sampleArr.push(tableTennis[i], tableTennis[tableTennis.length - 1 - i])
 }
 
-function playerWinningPercentage() {
+function generatingPlayerMatchPoints() {
     let numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     let elem_1 = numeric[~~(Math.random() * numeric.length)];
     let elem_2 = numeric[~~(Math.random() * numeric.length)];
@@ -56,9 +56,9 @@ let count = 1
 function result(firstOpponent, secondOpponent, opponentResult) {
 
     for (let i in firstOpponent) {
-        firstOpponent[i]["point"] = playerWinningPercentage()
+        firstOpponent[i]["point"] = generatingPlayerMatchPoints()
         firstOpponent[i]["noOfMatches"] = firstOpponent[i].noOfMatches + 1
-        secondOpponent[i]["point"] = playerWinningPercentage()
+        secondOpponent[i]["point"] = generatingPlayerMatchPoints()
         secondOpponent[i]["noOfMatches"] = secondOpponent[i].noOfMatches + 1
 
         if (firstOpponent[i].point > secondOpponent[i].point) {
@@ -102,7 +102,7 @@ console.table(semiFinal)
 console.log("\n-------------FINAL----------------")
 let finalOpponent1 = []
 let finalOpponent2 = []
-let winner=[]
+let winner = []
 gettingOpponents(final, finalOpponent1, finalOpponent2)
 console.table(final)
 console.log("\n-------------WINNER----------------")

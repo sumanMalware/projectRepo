@@ -17,9 +17,9 @@ let tableTennis: player[] = [
     { player: 8, playerID: "sj324", name: "Sarman Joshi", rank: 8, noOfMatches: 324 }
 ]
 
-let sampleArr: any = []
+let quarterFinalist: any = []
 for (let i = 0; i < tableTennis.length / 2; i++) {
-    sampleArr.push(tableTennis[i], tableTennis[tableTennis.length - 1 - i])
+    quarterFinalist.push(tableTennis[i], tableTennis[tableTennis.length - 1 - i])
 }
 
 function playerWinningPercentage() {
@@ -29,9 +29,9 @@ function playerWinningPercentage() {
     return elem_1 + "" + elem_2
 }
 
-function gettingOpponents(sampleArr: any, quarterFinalOpponent1: any, quarterFinalOpponent2: any) {
+function gettingOpponents(quarterFinalist: any, quarterFinalOpponent1: any, quarterFinalOpponent2: any) {
 
-    sampleArr.forEach((data: any, index: any) => {
+    quarterFinalist.forEach((data: number, index: number) => {
         if (index % 2 == 0) {
             quarterFinalOpponent1.push(data)
         } else {
@@ -43,13 +43,13 @@ function gettingOpponents(sampleArr: any, quarterFinalOpponent1: any, quarterFin
 
 let quarterFinalOpponent1: any = []
 let quarterFinalOpponent2: any = []
-gettingOpponents(sampleArr, quarterFinalOpponent1, quarterFinalOpponent2)
+gettingOpponents(quarterFinalist, quarterFinalOpponent1, quarterFinalOpponent2)
 
 function swappingIndex(tempArr: any) {
     let evenArr: any = []
     let oddArr: any = []
 
-    tempArr.forEach((data: any, index: any) => {
+    tempArr.forEach((data: number, index: number) => {
         if (index % 2 == 0) {
             evenArr.push(data)
         } else {
@@ -93,19 +93,19 @@ function result(firstOpponent: any, secondOpponent: any, opponentResult: any) {
     return opponentResult
 }
 
-let semiFinal: any = []
+let semiFinalist: any = []
 console.log("\n------------QUARTER FINAL--------------")
-result(quarterFinalOpponent1, quarterFinalOpponent2, semiFinal)
+result(quarterFinalOpponent1, quarterFinalOpponent2, semiFinalist)
 
 console.log("\n-------------SEMI FINAL----------------")
 let semiFinalOpponent1: any = []
 let semiFinalOpponent2: any = []
-let final: any = []
-gettingOpponents(semiFinal, semiFinalOpponent1, semiFinalOpponent2)
-result(semiFinalOpponent1, semiFinalOpponent2, final)
+let finalist: any = []
+gettingOpponents(semiFinalist, semiFinalOpponent1, semiFinalOpponent2)
+result(semiFinalOpponent1, semiFinalOpponent2, finalist)
 
 console.log("\n-------------FINAL----------------")
 let finalOpponent1: any = []
 let finalOpponent2: any = []
-gettingOpponents(final, finalOpponent1, finalOpponent2)
-result(finalOpponent1, finalOpponent2, final)
+gettingOpponents(finalist, finalOpponent1, finalOpponent2)
+result(finalOpponent1, finalOpponent2, finalist)
