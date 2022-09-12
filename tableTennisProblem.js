@@ -9,6 +9,9 @@ let tableTennis = [
     { player: 7, playerID: "dr326", name: "Deepak Raj", rank: 7, noOfMatches: 326 },
     { player: 8, playerID: "sj324", name: "Sarman Joshi", rank: 8, noOfMatches: 324 }
 ]
+//sorting the players, considering their rank
+
+tableTennis = tableTennis.sort((a, b) => a.rank - b.rank)
 
 let sampleArr = []
 for (let i = 0; i < tableTennis.length / 2; i++) {
@@ -16,7 +19,7 @@ for (let i = 0; i < tableTennis.length / 2; i++) {
 }
 
 function generatingPlayerMatchPoints() {
-    let numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     let elem_1 = numeric[~~(Math.random() * numeric.length)];
     let elem_2 = numeric[~~(Math.random() * numeric.length)];
     return elem_1 + "" + elem_2
