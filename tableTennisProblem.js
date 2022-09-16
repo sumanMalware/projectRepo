@@ -1,22 +1,33 @@
-
+//You can use as many player of 2 to the power
 let tableTennis = [
-    { player: 1, playerID: "vn787", name: "Vijendra Nath", rank: 1, noOfMatches: 787 },
+    { player: 1, playerID: "vn787", name: "Vijendra Nath", rank: 10, noOfMatches: 787 },
     { player: 2, playerID: "vk654", name: "Vipul Kumar", rank: 2, noOfMatches: 654 },
-    { player: 3, playerID: "vk666", name: "Virat Kohli", rank: 3, noOfMatches: 666 },
-    { player: 4, playerID: "as354", name: "Abhishek sinha", rank: 4, noOfMatches: 354 },
+    { player: 3, playerID: "vk666", name: "Virat Kohli", rank: 4, noOfMatches: 666 },
+    { player: 4, playerID: "as354", name: "Abhishek sinha", rank: 6, noOfMatches: 354 },
     { player: 5, playerID: "bs555", name: "Bijay Singh", rank: 5, noOfMatches: 555 },
-    { player: 6, playerID: "cr645", name: "Chandan Rajput", rank: 6, noOfMatches: 645 },
-    { player: 7, playerID: "dr326", name: "Deepak Raj", rank: 7, noOfMatches: 326 },
-    { player: 8, playerID: "sj324", name: "Sarman Joshi", rank: 8, noOfMatches: 324 }
+    { player: 6, playerID: "cr645", name: "Chandan Rajput", rank: 11, noOfMatches: 645 },
+    { player: 7, playerID: "dr326", name: "Deepak Raj", rank: 8, noOfMatches: 326 },
+    { player: 8, playerID: "sj324", name: "Sarman Joshi", rank: 5, noOfMatches: 324 },
+    { player: 9, playerID: "vt901", name: "Vikas Tripathi", rank: 9, noOfMatches: 700 },
+    { player: 10, playerID: "ss673", name: "Sourav Shukla", rank: 1, noOfMatches: 654 },
+    { player: 11, playerID: "ps888", name: "Pan Singh", rank: 7, noOfMatches: 666 },
+    { player: 12, playerID: "rd996", name: "Rajesh Das", rank: 14, noOfMatches: 354 },
+    { player: 13, playerID: "ps555", name: "Pan Singh", rank: 16, noOfMatches: 555 },
+    { player: 14, playerID: "rs897", name: "Rajeev Sinha", rank: 12, noOfMatches: 645 },
+    { player: 15, playerID: "sk326", name: "Sardar Khan", rank: 15, noOfMatches: 326 },
+    { player: 16, playerID: "sp324", name: "Sukhatme Panday", rank: 13, noOfMatches: 324 }
+
 ]
 //sorting the players, considering their rank
 
 tableTennis = tableTennis.sort((a, b) => a.rank - b.rank)
 
-let sampleArr = []
+let storingOpponents = []
 for (let i = 0; i < tableTennis.length / 2; i++) {
-    sampleArr.push(tableTennis[i], tableTennis[tableTennis.length - 1 - i])
+    storingOpponents.push(tableTennis[i], tableTennis[tableTennis.length - 1 - i])
 }
+
+//this function will create a point which a player got on each match 
 
 function generatingPlayerMatchPoints() {
     let numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -25,21 +36,25 @@ function generatingPlayerMatchPoints() {
     return elem_1 + "" + elem_2
 }
 
-function gettingOpponents(sampleArr, quarterFinalOpponent1, quarterFinalOpponent2) {
+//in this function this function will divide opponents in different arrays
 
-    sampleArr.forEach((data, index) => {
+function gettingOpponents(storingOpponents, opponent1, opponent2) {
+    storingOpponents.forEach((data, index) => {
         if (index % 2 == 0) {
-            quarterFinalOpponent1.push(data)
+            opponent1.push(data)
         } else {
-            quarterFinalOpponent2.push(data)
+            opponent2.push(data)
         }
     })
-    return [quarterFinalOpponent1, quarterFinalOpponent2]
+    return [opponent1, opponent2]
 }
 
-let quarterFinalOpponent1 = []
-let quarterFinalOpponent2 = []
-gettingOpponents(sampleArr, quarterFinalOpponent1, quarterFinalOpponent2)
+firstOpponent = []
+secondOpponent = []
+
+gettingOpponents(storingOpponents, firstOpponent, secondOpponent)
+
+//this function will swap the opponents because we dont want rank 1 vs rank 2 will eliminate in round 1
 
 function swappingIndex(tempArr) {
     let evenArr = []
@@ -55,60 +70,56 @@ function swappingIndex(tempArr) {
     return evenArr.concat(oddArr)
 }
 
-let count = 1
-function result(firstOpponent, secondOpponent, opponentResult) {
+//concatinating for result function for ease of code
 
-    for (let i in firstOpponent) {
-        firstOpponent[i]["point"] = generatingPlayerMatchPoints()
-        firstOpponent[i]["noOfMatches"] = firstOpponent[i].noOfMatches + 1
-        secondOpponent[i]["point"] = generatingPlayerMatchPoints()
-        secondOpponent[i]["noOfMatches"] = secondOpponent[i].noOfMatches + 1
+concatinating = swappingIndex(firstOpponent).concat(swappingIndex(secondOpponent))
 
-        if (firstOpponent[i].point > secondOpponent[i].point) {
-            opponentResult.push(firstOpponent[i])
-            // console.table(`MATCH:- ${count} Opponents :- ${firstOpponent[i].name} vs ${secondOpponent[i].name}\n WINNER :- ${firstOpponent[i].name}\n`)
-            count++
+match = 1                           //for counting the matches
+round = 1                           //for counting the rounds
+
+//this is a recursive function it will show the rounds and matchs
+
+function result(concatinating) {
+    let opponentResult = []
+    opponent1 = []
+    opponent2 = []
+    gettingOpponents(concatinating, opponent1, opponent2)                   //calling the function for dividing the opponents in different arrays
+    console.log(`\n---------------------Round :- ${round}-------------------\n`)
+    round++
+
+    for (let i in opponent1) {
+        opponent1[i]["point"] = generatingPlayerMatchPoints()
+        opponent1[i]["noOfMatches"] = opponent1[i].noOfMatches + 1
+        opponent2[i]["point"] = generatingPlayerMatchPoints()
+        opponent2[i]["noOfMatches"] = opponent2[i].noOfMatches + 1
+
+        if (opponent1[i].point > opponent2[i].point) {
+            opponentResult.push(opponent1[i])
+            console.log(`MATCH:- ${match} Opponents :- ${opponent1[i].name} vs ${opponent2[i].name}\n WINNER :- ${opponent1[i].name}\n`)
+            match++
         }
-        else if (firstOpponent[i].point == secondOpponent[i].point) {
-            if (firstOpponent[i].rank > secondOpponent[i].rank) {
-                opponentResult.push(secondOpponent[i])
-                // console.table(`MATCH:- ${count} Opponents :- ${firstOpponent[i].name} vs ${secondOpponent[i].name}\n WINNER :- ${secondOpponent[i].name}\n`)
-                count++
+        else if (opponent1[i].point == opponent2[i].point) {
+            if (opponent1[i].rank > opponent2[i].rank) {
+                opponentResult.push(opponent2[i])
+                console.log(`MATCH:- ${match} Opponents :- ${opponent1[i].name} vs ${opponent2[i].name}\n WINNER :- ${opponent2[i].name}\n`)
+                match++
             } else {
-                opponentResult.push(firstOpponent[i])
-                // console.table(`MATCH:- ${count} Opponents :- ${firstOpponent[i].name} vs ${secondOpponent[i].name}\n WINNER :- ${firstOpponent[i].name}\n`)
-                count++
+                opponentResult.push(opponent1[i])
+                console.log(`MATCH:- ${match} Opponents :- ${opponent1[i].name} vs ${opponent2[i].name}\n WINNER :- ${opponent1[i].name}\n`)
+                match++
             }
         }
-        else if (firstOpponent[i].point < secondOpponent[i].point) {
-            opponentResult.push(secondOpponent[i])
-            // console.table(`MATCH:- ${count} Opponents :- ${firstOpponent[i].name} vs ${secondOpponent[i].name}\n WINNER :- ${secondOpponent[i].name}\n`)
-            count++
+        else if (opponent1[i].point < opponent2[i].point) {
+            opponentResult.push(opponent2[i])
+            console.log(`MATCH:- ${match} Opponents :- ${opponent1[i].name} vs ${opponent2[i].name}\n WINNER :- ${opponent2[i].name}\n`)
+            match++
         }
     }
-    return opponentResult
+
+    if (opponentResult.length > 1) {
+        result(opponentResult)                                 //recusrsion for printing rounds again and again
+    }    
 }
+result(concatinating)
 
-let semiFinal = []
-console.log("\n------------QUARTER FINAL--------------")
-result(quarterFinalOpponent1, quarterFinalOpponent2, semiFinal)
-console.table(sampleArr)
 
-console.log("\n-------------SEMI FINAL----------------")
-let semiFinalOpponent1 = []
-let semiFinalOpponent2 = []
-let final = []
-gettingOpponents(semiFinal, semiFinalOpponent1, semiFinalOpponent2)
-result(semiFinalOpponent1, semiFinalOpponent2, final)
-console.table(semiFinal)
-
-console.log("\n-------------FINAL----------------")
-let finalOpponent1 = []
-let finalOpponent2 = []
-let winner = []
-gettingOpponents(final, finalOpponent1, finalOpponent2)
-console.table(final)
-console.log("\n-------------WINNER----------------")
-result(finalOpponent1, finalOpponent2, winner)
-delete winner[0].point
-console.table(winner)
