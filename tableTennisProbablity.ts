@@ -31,8 +31,6 @@ let tableTennis: PlayerDetails[] = [
 
 tableTennis = tableTennis.sort((a, b) => a.rank - b.rank)
 
-tableTennis = tableTennis.sort((a, b) => a.rank - b.rank)
-
 let storingOpponents = []
 for (let i = 0; i < tableTennis.length / 2; i++) {
     storingOpponents.push(tableTennis[i], tableTennis[tableTennis.length - 1 - i])
