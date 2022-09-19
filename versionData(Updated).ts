@@ -20,9 +20,9 @@ interface Feature {
     description: string;
 }
 enum ReleaseType {
-    Major,
-    Enhancement,
-    Patch,
+    Major="Major",
+    Enhancement="Enhancement",
+    Patch="Patch",
 }
 
 //putting the objects under the main array(putting every version details)
